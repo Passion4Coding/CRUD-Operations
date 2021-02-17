@@ -1,0 +1,141 @@
+<form [formGroup]="studentForm">
+  <h2 class="dialogHeading">
+    Do you want to <strong>{{ action }} ?</strong>
+  </h2>
+  <div *ngIf="action != 'Delete'; else elseTemplate">
+    <div fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex="50">
+        <mat-form-field appearance="outline">
+          <mat-label>Full Name</mat-label>
+          <input
+            matInput
+            formControlName="name"
+            [(ngModel)]="studentSelected.name"
+          />
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50" fxLayoutAlign="center center" class="radioBlock">
+        <mat-label>Gender</mat-label>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="gender"
+          [(ngModel)]="studentSelected.gender"
+        >
+          <mat-radio-button value="Male">Male</mat-radio-button>
+          <mat-radio-button value="Female">Female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex="50">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            [(ngModel)]="studentSelected.emailid"
+          />
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50">
+        <mat-form-field appearance="outline">
+          <mat-label>Mobile Number</mat-label>
+          <input
+            matInput
+            formControlName="mobile"
+            [(ngModel)]="studentSelected.contact"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex="50">
+        <mat-form-field appearance="outline">
+          <mat-label>DOB</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker1"
+            formControlName="date"
+            [(ngModel)]="studentSelected.date"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50">
+        <mat-form-field appearance="outline">
+          <mat-label>Qualifications</mat-label>
+          <mat-select
+            formControlName="qualification"
+            multiple
+            [(ngModel)]="studentSelected.qualification"
+          >
+            <mat-select-trigger>
+              {{ qualification.value ? qualification.value[0] : "" }}
+              <span *ngIf="qualification.value?.length > 1">
+                (+{{ qualification.value.length - 1 }}
+                {{ qualification.value?.length === 2 ? "other" : "others" }})
+              </span>
+            </mat-select-trigger>
+            <mat-option
+              *ngFor="let qualification of qualificationList"
+              [value]="qualification"
+              >{{ qualification }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex="50">
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <mat-select formControlName="city" [(ngModel)]="studentSelected.city">
+            <mat-option value="Bengaluru">Bengaluru</mat-option>
+            <mat-option value="Pune">Pune</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50">
+        <mat-form-field appearance="outline">
+          <mat-label>State</mat-label>
+          <mat-select
+            formControlName="state"
+            [(ngModel)]="studentSelected.state"
+          >
+            <mat-option value="Karnataka">Karnataka</mat-option>
+            <mat-option value="Maharashtra">Maharashtra</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #elseTemplate>
+    <strong>{{ studentSelected.name }} details</strong>
+  </ng-template>
+
+  <div mat-dialog-actions>
+    <button
+      mat-button
+      (click)="curdOperations()"
+      mat-flat-button
+      color="primary"
+    >
+      {{ action }}
+    </button>
+    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">
+      Cancel
+    </button>
+  </div>
+</form>
