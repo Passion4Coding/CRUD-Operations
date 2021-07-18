@@ -1,0 +1,12 @@
+.heading {
+  font-size: 28px;
+  padding-top: 10px;
+  font-family: "Poppins-Medium";
+}
+.progressBar {
+  margin: 35px 0 25px;
+}
+
+.usersCount h3 {
+  font-family: "Poppins-Bold";
+}

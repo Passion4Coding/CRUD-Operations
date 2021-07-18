@@ -33,6 +33,17 @@ mat-form-field {
   width: 100%;
 }
 
+.p-10 {
+  padding: 10px;
+}
+.pl-10 {
+  padding-left: 10px;
+}
+.pt-15 {
+  padding-top: 15px;
+}
+
+
 .studentHeading h2 {
   font-size: 32px;
   margin: 15px auto;
@@ -41,11 +52,6 @@ mat-form-field {
   line-height: 1.5;
   padding: 5px;
   font-family: "Poppins-SemiBold";
-}
-
-.tableContainer {
-  padding: 5px 25px;
-  margin: auto 25px;
 }
 
 .mat-raised-button,
@@ -61,7 +67,7 @@ mat-form-field {
 }
 
 #table .mat-table {
-  border-radius: 4px !important;
+  background-color: inherit;
 }
 
 #table .mat-header-row {
@@ -86,43 +92,31 @@ mat-form-field {
   font-weight: 600;
 }
 
-.studentTable .mat-column-id {
-  flex: 0 0 5%;
-}
 .studentTable .mat-column-name {
-  flex: 0 0 13%;
+  flex: 0 0 20%;
   overflow: auto;
 }
 .studentTable .mat-column-emailid {
-  flex: 0 0 14%;
-}
-.studentTable .mat-column-gender {
-  flex: 0 0 6%;
-}
-.studentTable .mat-column-date {
-  flex: 0 0 8%;
-}
-.studentTable .mat-column-contact {
-  flex: 0 0 9%;
-}
-.studentTable .mat-column-qualification {
   flex: 0 0 22%;
 }
-.studentTable .mat-column-city {
-  flex: 0 0 8%;
+.studentTable .mat-column-gender {
+  flex: 0 0 12%;
 }
-.studentTable .mat-column-state {
-  flex: 0 0 8%;
+.studentTable .mat-column-date {
+  flex: 0 0 12%;
+}
+.studentTable .mat-column-address {
+  flex: 0 0 26%;
 }
 .studentTable .mat-column-action {
-  flex: 0 0 7%;
+  flex: 0 0 8%;
 }
 
 .mat-icon {
   cursor: pointer;
 }
 .mat-icon:nth-of-type(1) {
-  color: #3b4980;
+  /* color: #3b4980; */
   margin-right: 5px;
 }
 
@@ -206,6 +200,9 @@ strong {
 
   .studentTable .mat-header-cell {
     font-size: 14px;
+  }
+  .heading {
+    font-size: 18px;
   }
 }
 

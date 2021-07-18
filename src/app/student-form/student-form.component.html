@@ -15,7 +15,7 @@
         </mat-form-field>
       </div>
 
-      <div fxFlex="50" fxLayoutAlign="center center" class="radioBlock">
+      <div fxFlex="50" fxLayoutAlign="start center" class="radioBlock">
         <mat-label>Gender</mat-label>
         <mat-radio-group
           aria-label="Select an option"
@@ -42,19 +42,6 @@
 
       <div fxFlex="50">
         <mat-form-field appearance="outline">
-          <mat-label>Mobile Number</mat-label>
-          <input
-            matInput
-            formControlName="mobile"
-            [(ngModel)]="studentSelected.contact"
-          />
-        </mat-form-field>
-      </div>
-    </div>
-
-    <div fxLayout="row" fxLayoutGap="10px">
-      <div fxFlex="50">
-        <mat-form-field appearance="outline">
           <mat-label>DOB</mat-label>
           <input
             matInput
@@ -67,30 +54,6 @@
             [for]="picker1"
           ></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
-        </mat-form-field>
-      </div>
-
-      <div fxFlex="50">
-        <mat-form-field appearance="outline">
-          <mat-label>Qualifications</mat-label>
-          <mat-select
-            formControlName="qualification"
-            multiple
-            [(ngModel)]="studentSelected.qualification"
-          >
-            <mat-select-trigger>
-              {{ qualification.value ? qualification.value[0] : "" }}
-              <span *ngIf="qualification.value?.length > 1">
-                (+{{ qualification.value.length - 1 }}
-                {{ qualification.value?.length === 2 ? "other" : "others" }})
-              </span>
-            </mat-select-trigger>
-            <mat-option
-              *ngFor="let qualification of qualificationList"
-              [value]="qualification"
-              >{{ qualification }}</mat-option
-            >
-          </mat-select>
         </mat-form-field>
       </div>
     </div>

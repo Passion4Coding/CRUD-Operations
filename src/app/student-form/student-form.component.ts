@@ -14,15 +14,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class StudentFormComponent implements OnInit {
   studentForm: FormGroup;
-  qualification = new FormControl();
   action: any;
   studentSelected: any;
-  qualificationList: string[] = [
-    'HTML5',
-    'CSS3',
-    'Angular',
-    'Angular Material',
-  ];
 
   constructor(
     private fb: FormBuilder,
@@ -43,7 +36,6 @@ export class StudentFormComponent implements OnInit {
       email: [null, Validators.compose([Validators.required])],
       mobile: [null, Validators.compose([Validators.required])],
       date: [null, Validators.compose([Validators.required])],
-      qualification: [null, Validators.compose([Validators.required])],
       gender: [null, Validators.compose([Validators.required])],
       city: [null, Validators.compose([Validators.required])],
       state: [null, Validators.compose([Validators.required])],

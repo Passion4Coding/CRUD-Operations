@@ -1,30 +1,54 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentFormComponent } from '../student-form/student-form.component';
+import { StudentService } from '../services/student.service';
 
-var ate: Date = new Date();
+var newDate: Date = new Date();
 const ELEMENT_DATA = [
   {
     id: 1,
     name: 'Ankit Gupta',
-    emailid: 'qw4151@gmail.com',
-    contact: '9129829901',
+    emailid: 'iankitgupta9@gmail.com',
     gender: 'Male',
-    date: ate,
-    qualification: 'HTML5, CSS3, Angular, Angular Material',
+    date: newDate,
     city: 'Bengaluru',
-    state: 'Karnataka ',
+    state: 'Karnataka',
   },
   {
     id: 2,
     name: 'Ansh Gupta',
     emailid: 'gua9838@gmail.com',
-    contact: '9129829901',
-    gender: 'Male',
-    date: ate,
-    qualification: 'HTML5, CSS3, Angular, Angular Material',
+    gender: 'Female',
+    date: newDate,
     city: 'Bengaluru',
-    state: 'Karnataka ',
+    state: 'Karnataka',
+  },
+  {
+    id: 3,
+    name: 'Rakesh Roshan',
+    emailid: 'gua9838@gmail.com',
+    gender: 'Male',
+    date: newDate,
+    city: 'Bengaluru',
+    state: 'Karnataka',
+  },
+  {
+    id: 4,
+    name: 'Nitin Shinde',
+    emailid: 'gua9838@gmail.com',
+    gender: 'Male',
+    date: newDate,
+    city: 'Bengaluru',
+    state: 'Karnataka',
+  },
+  {
+    id: 5,
+    name: 'Kavita Rathod',
+    emailid: 'gua9838@gmail.com',
+    gender: 'Female',
+    date: newDate,
+    city: 'Bengaluru',
+    state: 'Karnataka',
   },
 ];
 
@@ -35,25 +59,44 @@ const ELEMENT_DATA = [
   encapsulation: ViewEncapsulation.None,
 })
 export class StudentDetailsComponent implements OnInit {
-  count = 3;
+  count = 5;
+  noOfMale = 0;
+  noOfFemale = 0;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private StudentService: StudentService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.countValue();
+  }
 
   dataSource = ELEMENT_DATA;
   displayedColumns: string[] = [
-    'id',
     'name',
-    'gender',
     'emailid',
-    'qualification',
+    'gender',
     'date',
-    'contact',
-    'city',
-    'state',
+    'address',
     'action',
   ];
+
+  countValue() {
+    this.noOfMale = 0;
+    this.noOfFemale = 0;
+    this.dataSource.filter((value: any) => {
+      if (value.gender == 'Male') {
+        this.noOfMale = this.noOfMale + 1;
+      } else if (value.gender == 'Female') {
+        this.noOfFemale = this.noOfFemale + 1;
+      }
+    });
+    this.StudentService.maleCount(this.noOfMale);
+    this.StudentService.femaleCount(this.noOfFemale);
+    var totalCount = this.noOfMale + this.noOfFemale;
+    this.StudentService.isCountUpdates(totalCount);
+  }
 
   // To perform Curd Operations
   openDialog(action: any, selectedStudent: any) {
@@ -78,14 +121,13 @@ export class StudentDetailsComponent implements OnInit {
       id: this.count++,
       name: student.name,
       emailid: student.emailid,
-      contact: student.contact,
       gender: student.gender,
       date: student.date,
-      qualification: student.qualification,
       city: student.city,
       state: student.state,
     });
     this.dataSource = [...this.dataSource];
+    this.countValue();
   }
 
   // To Update student details
@@ -94,15 +136,14 @@ export class StudentDetailsComponent implements OnInit {
       if (value.id == student.id) {
         value.name = student.name;
         value.emailid = student.emailid;
-        value.contact = student.contact;
         value.gender = student.gender;
         value.date = student.date;
-        value.qualification = student.qualification;
         value.city = student.city;
         value.state = student.state;
       }
       return true;
     });
+    this.countValue();
   }
 
   // To Delete student details
@@ -110,5 +151,6 @@ export class StudentDetailsComponent implements OnInit {
     this.dataSource = this.dataSource.filter((value: any) => {
       return value.id != student.id;
     });
+    this.countValue();
   }
 }

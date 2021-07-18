@@ -1,0 +1,18 @@
+<div fxLayout="column">
+  <div fxFlex="100">
+    <h2 class="heading">Progress</h2>
+    <mat-progress-bar
+      mode="determinate"
+      [value]="total"
+      class="progressBar"
+    ></mat-progress-bar>
+  </div>
+  <div fxFlex="100" *ngFor="let user of usersCount" class="usersCount">
+    <div fxFlex="70">
+      <h3>{{ user.heading }} :</h3>
+    </div>
+    <div fxFlex="30">
+      <h3>{{ user.count }}</h3>
+    </div>
+  </div>
+</div>

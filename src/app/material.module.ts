@@ -11,6 +11,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   exports: [
@@ -27,6 +30,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDialogModule,
     MatIconModule,
     MatTooltipModule,
+    MatToolbarModule,
+    MatProgressBarModule,
+    MatPaginatorModule
   ],
 })
 export class AngularMaterialModule {}

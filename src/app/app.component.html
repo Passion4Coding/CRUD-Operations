@@ -1,8 +1,17 @@
 <div fxLayout="column">
-  <div fxFlex="100" fxLayoutAlign="center center" class="studentHeading">
-    <h2>Student Dashboard</h2>
-  </div>
-  <div fxFlex="100" class="tableContainer">
-    <app-student-details></app-student-details>
+  <app-header></app-header>
+  <div
+    fxLayout="row"
+    fxLayout.lt-md="column"
+    fxLayoutGap="20px"
+    class="p-10 pt-15"
+    style="background-color: rgb(255, 255, 255)"
+  >
+    <div fxFlex="80" class="tableContainer">
+      <app-student-details></app-student-details>
+    </div>
+    <div fxFlex="20" class="tableContainer p-10">
+      <app-student-count></app-student-count>
+    </div>
   </div>
 </div>

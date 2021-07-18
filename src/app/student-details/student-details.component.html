@@ -1,33 +1,20 @@
 <div fxLayout="column" fxLayoutGap="10px">
-  <div fxFlex="100">
+  <div fxFlex="100" class="pt-15">
     <button
+      class="pt-15"
       mat-raised-button
       (click)="openDialog('Add', {})"
-      matTooltip="Add New Student"
+      matTooltip="Add New User"
       matTooltipClass="toolTipClass"
     >
-      Add Student
+      Add User
     </button>
   </div>
   <div fxFlex="100" id="table">
-    <mat-table
-      [dataSource]="dataSource"
-      #mytable
-      class="mat-elevation-z8 studentTable"
-    >
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef>SNo</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
-      </ng-container>
-
+    <mat-table [dataSource]="dataSource" #mytable class="studentTable">
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
-      </ng-container>
-      <!--  -->
-      <ng-container matColumnDef="emailid">
-        <mat-header-cell *matHeaderCellDef>Email-ID</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.emailid }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="gender">
@@ -35,31 +22,21 @@
         <mat-cell *matCellDef="let element">{{ element.gender }}</mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="emailid">
+        <mat-header-cell *matHeaderCellDef>Email-ID</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.emailid }}</mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="date">
         <mat-header-cell *matHeaderCellDef>DOB</mat-header-cell>
         <mat-cell *matCellDef="let element">{{ element.date | date }}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="contact">
-        <mat-header-cell *matHeaderCellDef>Contact </mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.contact }}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="qualification">
-        <mat-header-cell *matHeaderCellDef>Qualifications</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          {{ element.qualification }}
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef>Address</mat-header-cell>
+        <mat-cell *matCellDef="let element"
+          >{{ element.city }}, {{ element.state }}, India
         </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="city">
-        <mat-header-cell *matHeaderCellDef>City</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.city }}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="state">
-        <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.state }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="action">
