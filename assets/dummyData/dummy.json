@@ -1,0 +1,27 @@
+{
+    
+"listOfUsers" : [
+    {
+        "id": 1,
+        "name": "Ankit Gupta",
+        "emailid": "qw4151@gmail.com",
+        "contact": 9129829901,
+        "gender": "Male",
+        "date": "Jul 16, 2021",
+        "qualification": "HTML5, CSS3, Angular, Angular Material",
+        "city": "Bengaluru",
+        "state": "Karnataka"
+      },
+      {
+          "id": 2,
+          "name": "Ansh Gupta",
+          "emailid": "gua9838@gmail.com",
+          "contact": 9129829901,
+          "gender": "feMale",
+          "date": "ate",
+          "qualification": "HTML5, CSS3, Angular, Angular Material",
+          "city": "Bengaluru",
+          "state": "Karnataka"
+        }
+]
+}
